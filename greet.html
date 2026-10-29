@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#262a36">
+<meta name="referrer" content="no-referrer">
+<title>Iky — send a greeting</title>
+<script>try{var v=JSON.parse(localStorage.getItem("iky27:theme"));document.documentElement.setAttribute("data-theme",v||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"))}catch(e){}</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="guest">
+<div class="ctl"><select id="lang" aria-label="Language"></select><button id="theme" class="ibtn" type="button" aria-label="Switch theme"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button></div>
+<main>
+<div class="app" id="app">
+<header class="bar"><b>IKY</b></header>
+<section class="screen on" id="countdown" aria-labelledby="t-count">
+  <h2 id="t-count">Until your day</h2>
+  <div id="timer" class="timer" role="timer">
+    <div><b id="c-d">0</b><span>days</span></div>
+    <div><b id="c-h">00</b><span>hours</span></div>
+    <div><b id="c-m">00</b><span>minutes</span></div>
+    <div><b id="c-s">00</b><span>seconds</span></div>
+  </div>
+  <p id="c-msg" class="lede"></p>
+</section>
+<section class="screen on" id="g-form" aria-labelledby="t-g">
+  <h2 id="t-g">Send Iky a greeting</h2>
+  <p class="lede">You can see the countdown and send a birthday greeting. Nothing is sent automatically: you will get a link to send to Iky yourself.</p>
+  <div class="form">
+    <label for="g-name">Your name</label>
+    <input id="g-name" type="text" maxlength="40" autocomplete="off">
+    <label for="g-msg">Your greeting</label>
+    <textarea id="g-msg" rows="5" maxlength="500"></textarea>
+    <div class="row"><button class="btn primary" id="g-make" type="button">Create greeting link</button></div>
+    <p class="status" id="g-status" role="status"></p>
+  </div>
+  <div id="g-out" class="card" hidden>
+    <label for="g-link" class="tag">Send this link to Iky:</label>
+    <input id="g-link" type="text" readonly>
+    <div class="row"><button class="btn primary" id="g-copy" type="button">Copy link</button><button class="btn" id="g-share" type="button">Share</button></div>
+  </div>
+</section>
+</div>
+</main>
+<script src="js/content.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/lang.js"></script>
+<script src="js/prefs.js"></script>
+<script src="js/guest.js"></script>
+</body>
+</html>

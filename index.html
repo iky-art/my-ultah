@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#262a36">
+<meta name="referrer" content="no-referrer">
+<title>Iky — A letter to my future self</title>
+<script>try{var v=JSON.parse(localStorage.getItem("iky27:theme"));document.documentElement.setAttribute("data-theme",v||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"))}catch(e){}</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="locked pinlock">
+<a class="skip" href="#app">Skip to content</a>
+<div class="sky" id="sky" aria-hidden="true"></div>
+<div class="ctl"><select id="lang" aria-label="Language"></select><button id="snd" class="ibtn" type="button" aria-label="Sound" aria-pressed="true"><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg></button><button id="theme" class="ibtn" type="button" aria-label="Switch theme"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button></div>
+<main>
+<section class="pinscreen" id="pin" aria-labelledby="pin-t">
+  <h2 id="pin-t"></h2>
+  <p class="note" id="pin-sub"></p>
+  <div class="dots" id="pin-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <p class="status" id="pin-msg" role="status"></p>
+  <div class="dialw" id="dialw" role="group" aria-label="PIN dial"></div>
+  <p class="note" id="pin-hint">Turn the dial, release to pick a digit.</p>
+  <button type="button" class="ibtn" id="pin-back" aria-label="Delete digit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6H9l-6 6 6 6h11a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1zM12 9l5 5M17 9l-5 5"/></svg></button>
+  <button class="link" id="pin-forgot" type="button">Forgot PIN? Erase everything and start over</button>
+  <p class="note">This PIN only locks the screen. It is not encryption.</p>
+</section>
+<section class="opening" id="opening" aria-labelledby="t-open">
+  <p class="date">April 4, 2027</p>
+  <h1 id="t-open">IKY</h1>
+  <p class="salute">Dear Iky,</p>
+  <p class="sub">A letter from who you were, to who you will become.</p>
+  <button class="btn primary" id="enter" type="button">Open the letter</button>
+  <p class="note">Everything you write here stays on this device.</p>
+</section>
+<div class="app" id="app">
+<header class="bar"><b>IKY</b></header>
+<section class="screen" id="countdown" aria-labelledby="t-count">
+  <h2 id="t-count">Until your day</h2>
+  <div id="timer" class="timer" role="timer">
+    <div><b id="c-d">0</b><span>days</span></div>
+    <div><b id="c-h">00</b><span>hours</span></div>
+    <div><b id="c-m">00</b><span>minutes</span></div>
+    <div><b id="c-s">00</b><span>seconds</span></div>
+  </div>
+  <p id="c-msg" class="lede"></p>
+  <p class="note">Counted to midnight on April 4, 2027, Western Indonesia Time (UTC+7), whatever time zone this phone is set to.</p>
+</section>
+<section class="screen" id="letter" aria-labelledby="t-letter">
+  <h2 id="t-letter">The letter</h2>
+  <div class="paper">
+    <p class="tag">Sample opening. Rewrite it in your own words.</p>
+    <div id="opening-text" class="prose" contenteditable="false" tabindex="-1"></div>
+    <div class="row">
+      <button class="btn" id="op-edit" type="button">Edit opening</button>
+      <button class="btn primary" id="op-save" type="button" hidden>Save opening</button>
+      <button class="btn" id="op-reset" type="button" hidden>Restore sample</button>
+    </div>
+    <p class="status" id="op-status" role="status"></p>
+  </div>
+  <div class="paper mine">
+    <label for="own" class="tag">Your words, written by you</label>
+    <textarea id="own" rows="10" placeholder="Start writing. Nothing here is sent anywhere."></textarea>
+    <p class="status" id="own-status" role="status">Saves automatically on this device.</p>
+  </div>
+</section>
+<section class="screen" id="archive" aria-labelledby="t-arch">
+  <h2 id="t-arch">Archive</h2>
+  <p class="lede">Memories, photographs, projects and lessons. Only what you add.</p>
+  <form id="a-form" class="form">
+    <input type="hidden" id="a-id">
+    <label for="a-kind">Kind</label>
+    <select id="a-kind"><option>Memory</option><option>Photograph</option><option>Moment</option><option>Project</option><option>Lesson</option></select>
+    <label for="a-title">Title</label>
+    <input id="a-title" type="text" maxlength="120" required autocomplete="off">
+    <label for="a-date">Date (optional)</label>
+    <input id="a-date" type="date">
+    <label for="a-text">What happened, and what it meant</label>
+    <textarea id="a-text" rows="5" maxlength="4000"></textarea>
+    <label for="a-photo">Photo (optional, shrunk and kept on this device)</label>
+    <input id="a-photo" type="file" accept="image/*">
+    <img id="a-prev" alt="Selected photo preview" hidden>
+    <div class="row">
+      <button class="btn primary" id="a-save" type="submit">Add to archive</button>
+      <button class="btn" id="a-cancel" type="button" hidden>Cancel edit</button>
+    </div>
+    <p class="status" id="a-status" role="status"></p>
+  </form>
+  <div id="a-list" class="entries"></div>
+  <div class="row">
+    <button class="btn" id="a-export" type="button">Download backup (.json)</button>
+  </div>
+</section>
+<section class="screen" id="wish" aria-labelledby="t-wish">
+  <h2 id="t-wish">A wish for the next chapter</h2>
+  <label for="w-text" class="lede">A wish, an intention or a promise for the year ahead.</label>
+  <textarea id="w-text" rows="6" placeholder="This year, I want to..."></textarea>
+  <div class="row"><button class="btn primary" id="w-save" type="button">Save wish</button><button class="btn" id="w-clear" type="button">Clear</button></div>
+  <p class="status" id="w-status" role="status"></p>
+</section>
+<section class="screen" id="greetings" aria-labelledby="t-gr">
+  <h2 id="t-gr">Greetings for you</h2>
+  <p class="lede">People can send you a greeting from the guest page. Opening their link adds it here, only on this device.</p>
+  <div class="row"><button class="btn" id="gr-copy" type="button">Copy guest link</button></div>
+  <div id="gr-list" class="entries"></div>
+  <div class="form">
+    <label for="gr-in">Paste a greeting link or code</label>
+    <textarea id="gr-in" rows="3"></textarea>
+    <div class="row"><button class="btn primary" id="gr-add" type="button">Add greeting</button></div>
+  </div>
+  <p class="status" id="gr-status" role="status"></p>
+</section>
+<section class="screen" id="closing" aria-labelledby="t-close">
+  <blockquote id="c-wish" hidden></blockquote>
+  <h2 id="t-close">This day belongs to you.</h2>
+  <p class="lede">Whatever the year held, you kept going. Read it slowly, then close the page.</p>
+  <p class="date">April 4, 2027</p>
+</section>
+<footer class="priv">
+  <p>Privacy: your writing lives in this browser's storage on this device. It is not encrypted, nothing is sent anywhere, and clearing site data or switching browsers will erase it. Use the backup button in the archive to keep a copy.</p>
+  <button class="btn" id="wipe" type="button">Erase everything on this device</button>
+  <button class="btn" id="pin-change" type="button">Change PIN</button>
+</footer>
+</div>
+</main>
+<nav class="tabs" aria-label="Sections"><button type="button" data-go="countdown"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Countdown</span></button><button type="button" data-go="letter"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>Letter</span></button><button type="button" data-go="archive"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg><span>Archive</span></button><button type="button" data-go="wish"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg><span>Wish</span></button><button type="button" data-go="greetings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><span>Greetings</span></button><button type="button" data-go="closing"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><span>Ending</span></button></nav>
+<script src="js/content.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/lang.js"></script>
+<script src="js/prefs.js"></script>
+<script src="js/main.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/greetings.js"></script>
+<script src="js/sound.js"></script>
+<script src="js/dial.js"></script>
+<script src="js/pin.js"></script>
+</body>
+</html>
